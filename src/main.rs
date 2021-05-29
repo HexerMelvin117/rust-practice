@@ -1,4 +1,8 @@
 #![allow(dead_code, unused_variables)]
+#[path = "mymods/testingmods.rs"]
+mod testingmods;
+#[path = "teststructs/test_structs.rs"]
+mod test_structs;
 
 struct Coords {
     latitude: f32,
@@ -34,5 +38,21 @@ fn main() {
     println!(
         "My coordinates are {}, {}",
         test_person.location.latitude, test_person.location.longitud
-    )
+    );
+
+    // Uses greet_user function within mymods/testingmods.rs
+    testingmods::greet_user();
+
+    // Prints return value of function add_two_nums within mymods/testingmods.rs
+    println!(
+        "The result of the sum is {}",
+        testingmods::add_two_nums(50, 60)
+    );
+
+    let my_book = test_structs::Book {
+        author: "Melvin".to_string(),
+        title: "Dictionary".to_string(),
+    };
+
+    my_book.present_book()
 }

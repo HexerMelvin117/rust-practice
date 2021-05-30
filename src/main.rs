@@ -3,6 +3,8 @@
 mod testingmods;
 #[path = "teststructs/test_structs.rs"]
 mod test_structs;
+mod testfuncs;
+use crate::testfuncs::{ say_something };
 
 struct Coords {
     latitude: f32,
@@ -19,6 +21,10 @@ impl Person {
     fn greet(&self) {
         println!("Hello this is {} {}", self.first_name, self.surname);
     }
+}
+
+fn testing_string(word: &str) {
+    println!("{}", word)
 }
 
 fn main() {
@@ -54,5 +60,8 @@ fn main() {
         title: "Dictionary".to_string(),
     };
 
-    my_book.present_book()
+    say_something("Hello yall");
+    say_something("Hello this seems to work");
+    my_book.present_book();
+    testing_string("Hello broskis")
 }

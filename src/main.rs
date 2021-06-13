@@ -1,10 +1,11 @@
 #![allow(dead_code, unused_variables)]
-#[path = "mymods/testingmods.rs"]
-mod testingmods;
 #[path = "teststructs/test_structs.rs"]
 mod test_structs;
 mod testfuncs;
-use crate::testfuncs::{ say_something };
+#[path = "mymods/testingmods.rs"]
+mod testingmods;
+use testfuncs::say_something;
+use text_io::read;
 
 struct Coords {
     latitude: f32,
@@ -63,5 +64,10 @@ fn main() {
     say_something("Hello yall");
     say_something("Hello this seems to work");
     my_book.present_book();
-    testing_string("Hello broskis")
+    testing_string("Hello broskis");
+
+    println!("Write Something: ");
+    let word: String = read!("{}\n");
+
+    println!("You wrote: {}", word)
 }
